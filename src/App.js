@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// frontend/src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PlayerDetailsPage from './pages/PlayerDetailsPage';
+import MatchPage from './pages/MatchPage';
+import './styles/App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <Router>
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/match">Start Match</Link>
+    </nav>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/player/:id" element={<PlayerDetailsPage />} />
+      <Route path="/match" element={<MatchPage />} />
+    </Routes>
+  </Router>
+);
 
 export default App;
